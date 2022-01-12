@@ -81,7 +81,6 @@ import { nanoid } from 'nanoid';
 import style from './style.module.css';
 
 function ContactForm({ onSubmit }) {
-    const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
@@ -90,28 +89,16 @@ function ContactForm({ onSubmit }) {
 
     const handleInputChange = event => {
         const { name, value } = event.currentTarget;
-        // setState({
-        //     id: nanoid(),
-        //     [name]: value,
-        // });
         if (name === 'name') setName(value);
         if (name === 'number') setNumber(value);
-        if (name === 'id') setId(value);
     };
 
     const handleSubmit = event => {
         event.preventDefault();
-        // onSubmit({ name: name, number: number, id: id });
-        onSubmit({ name, number, id });
+        onSubmit({ name, number });
         setName('');
         setNumber('');
-        setId('');
-        // reset();
     };
-
-    // const reset = () => {
-    //     this.setState({ name: '', number: '' });
-    // };
 
     return (
         <form
